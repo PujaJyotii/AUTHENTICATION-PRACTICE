@@ -2,8 +2,10 @@ import { useState , useRef, useContext } from 'react';
 
 import classes from './AuthForm.module.css';
 import AuthContext from '../../Store/auth-context';
+import { useHistory } from 'react-router-dom';
 
 const AuthForm = () => {
+ const history = useHistory()
   const emailInputRef=useRef();
   const passwordInputRef = useRef();
 
@@ -65,6 +67,7 @@ url='https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=A
         }
       }).then((data) => {
          authCtx.login(data.idToken)
+         history.replace('/')
       }).catch((err) => {
         alert(err.message)
       })

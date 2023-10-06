@@ -13,7 +13,7 @@ const AuthContext = React.createContext({
     const [token,setToken] = useState(null);
 
     const userIsLoggedIn = !!token;
-    const loginHandler = () =>{
+    const loginHandler = (token) =>{
         setToken(token)
     }
 
